@@ -209,7 +209,7 @@ Vous lierez au fichier HTML un script **Javascript** qui devra:
 Dans ce dossier, vous allez créer le fichier **traitement.php** dans lequel vous rédigerez un script qui:
 - Va se connecter au serveur de base de données
 - Créer une requête pour aller chercher une excuse **ayant la thématique reçue en paramètre**.
-- Afficher le plus joliment possible la ou les requêtes reçues.
+- Afficher le plus joliment possible la ou les excuses reçues.
 
 > ***
 > 🚀 **Travail à faire:**
