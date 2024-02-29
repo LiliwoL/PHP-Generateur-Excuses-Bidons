@@ -1,0 +1,100 @@
+version: '3.9'
+services:
+
+  # ========================================
+  # Container avec MariaDb
+  # ========================================
+  excuses-db:
+    container_name: excuses-db
+    # Quelle image utilise t on? cf. https://hub.docker.com/search?q=&type=image
+    image: mariadb:latest
+
+    # Comportement en cas de plantage
+    restart: unless-stopped
+
+    # Volumes partagés entre l'hôte et le container
+    volumes:
+      - ./db_data:/var/lib/mysql
+      # Script SQL utilisé au démarrage du container
+      - ../DATA/database.sql:/docker-entrypoint-initdb.d/init.sql
+
+    # Variables d'environnement définies dans le fichier .env
+    # https://mariadb.com/kb/en/mariadb-server-docker-official-image-environment-variables/
+    environment:
+      # Mot de passe de l'utilisateur root
+      MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+      MARIADB_DATABASE: "${DB_NAME}"
+      MARIADB_USER: "${DB_USER}"
+      MARIADB_PASSWORD: "${DB_PASSWORD}"
+
+    # Redirection de ports
+    ports:
+      # La machine locale ouvre le port 3308 qui "pointe" vers le port 3306 du container
+      - 3308:3306
+
+    networks:
+      - excuses-generator-project
+
+
+  # ========================================
+  # Container avec PhpMyAdmin
+  # ========================================
+  phpmyadmin:
+    container_name: excuses-phpmyadmin
+
+    # Quelle image utilise t on? cf. https://hub.docker.com/search?q=&type=image
+    image: phpmyadmin:latest
+
+    # Comportement en cas de plantage
+    restart: unless-stopped
+
+#    volumes:
+#      - ./config/pma_php.ini:/usr/local/etc/php/conf.d/conf.ini
+#      - ./config/pma_config.php:/etc/phpmyadmin/config.user.inc.php
+
+    # Variables d'environnement
+    # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
+    environment:
+      # A quel hôte
+      PMA_HOST: excuses-db
+      PMA_PORT: 3306
+      PMA_USER: "${DB_USER}"
+      PMA_PASSWORD: "${DB_PASSWORD}"
+      UPLOAD_LIMIT: 50M
+
+    # Redirection de ports
+    ports:
+      # La machine locale ouvre le port 8081 qui "pointe" vers le port 80 du container
+      - 8081:80
+
+    # Dépendance du container PhpMyAdmin avec le container excuses-db
+    depends_on:
+      - excuses-db
+
+    networks:
+      - excuses-generator-project
+
+  # ========================================
+  # Container avec l'application
+  # ========================================
+  web:
+    container_name: excuses-app
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ../app:/var/www/html
+    depends_on:
+      - excuses-db
+    networks:
+      - excuses-generator-project
+
+volumes:
+  dbdata:
+  app:
+
+networks:
+  excuses-generator-project:
+    driver: bridge
