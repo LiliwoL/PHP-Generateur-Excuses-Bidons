@@ -1,4 +1,4 @@
-# Générateur d'excuses créatives - Corrigé
+# 1. Générateur d'excuses créatives - Corrigé
 
 [toc]
 
@@ -25,7 +25,7 @@ bin/start
 Plus d'informations sur le docker et sa configuration dans le dossier **Docker**
 
 ---
-## Consignes
+## 1.1. Consignes
 
 Voici un TP **noté** à réaliser durant les vacances.
 
@@ -45,7 +45,7 @@ Je resterai joignable et disponible **jusqu'à vendredi après midi pour un sout
 - Utiliser Javascript pour vérifier les saisies de l'utilisateur et modifier l'apparence d'une page HTML et afficher les résultats
 
 ---
-## Contexte
+## 1.2. Contexte
 
 Générer ou afficher des excuses en fonction de critères sélectionnés.
 
@@ -55,7 +55,7 @@ Générer ou afficher des excuses en fonction de critères sélectionnés.
 - Serveur de base de données accessible
 - Serveur Web avec PHP installé
 ---
-## Attendu
+## 1.3. Attendu
 
 Vous devrez remettre un rapport au format **Markdown** comprenant vos réponses ainsi que les impressions écrans éventuellement demandées.
 
@@ -80,7 +80,7 @@ Le travail demandé sera demandé sous la forme suivante:
     - Accès aux données
 
 ---
-## Données fournies
+## 1.4. Données fournies
 
 Vous disposez du code SQL suivant à saisir dans **mariadb**.
 ```sql
@@ -165,7 +165,7 @@ Dans le **dossier racine** de votre serveur web, vous allez créer le dossier **
 > * Comment nomme-t- on ce dossier en **anglais** (et donc dans beaucoup de documentations ou manuels)?
 > ***
 ---
-### Formulaire HTML
+### 1.4.1. Formulaire HTML
 
 Dans ce dossier, vous allez créer le fichier **index.html** dans lequel vous rédigerez un document HTML avec les recommandations suivantes:
 
@@ -204,7 +204,7 @@ Vous lierez au fichier HTML un script **Javascript** qui devra:
     - Affichage du texte "Excuse en génération" dans la zone de texte sur la page HTML
 
 ---
-### Script de traitement PHP
+### 1.4.2. Script de traitement PHP
 
 Dans ce dossier, vous allez créer le fichier **traitement.php** dans lequel vous rédigerez un script qui:
 - Va se connecter au serveur de base de données
@@ -233,7 +233,7 @@ echo '</li></ul>';
 Elles permettront d'afficher des liens de retour vers la page HTML **index** et vers la pahe HTML que vous allez créer ensuite.
 
 ---
-## Formulaire d'ajout HTML
+## 1.5. Formulaire d'ajout HTML
 
 Dans ce fichier HTML nommé **ajout.html** et qui sera placé dans le même dossier que **index.html** et **traitement.php**, vous rédigerez un formulaire qui concrétisera la maquette suivante:
 
@@ -249,6 +249,7 @@ Ce formulaire utilisera comme action **ajout.php**.
 > * Ajoutez lui un script Javascript qui va **vérifier que l'excuse saisie a une longueur comprise entre 20 et 100 caractères.**
 > ***
 ---
+
 ## Script d'ajout
 
 Créez un fichier **ajout.php** qui va gérer l'ajout dans la base d'une nouvelle excuse.
@@ -265,10 +266,15 @@ En consultant la documentation de PHP, cherchez la méthode qui permettra de fai
 > ***
 ---
 
-# Bonus
+# 2. Bonus
 
 Complétez cette application!
 Par exemple:
-- Chechez à afficher TOUTES les excuses
+- Cherchez à afficher TOUTES les excuses
 - Réalisez un menu de navigation
 - Soyez créatifs!
+
+
+# 3. Exemples de rendus
+
+[](readme_docs/Etape1.mp4)
