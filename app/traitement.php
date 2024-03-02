@@ -11,21 +11,21 @@ $thematique = $_POST['thematique'] ?? null;
 // 2. Validation du paramètre
 if ($thematique === null || !in_array($thematique, [1, 2]) )
 {
-    echo 'Erreur : paramètre manquant ou non valide';
+    echo 'Erreur : thématique manquante ou non valide';
     exit;
 }
 
 // 3. Récupération des excuses
-$excuses = getExcuses($conn, $thematique);
+$excuses = getExcuse($conn, $thematique);
 
 // 4. Affichage des excuses
 echo '<h1>Excuses pour la thématique</h1>';
 echo '<h2>' . $thematique . '</h2>';
 echo '<ul>';
-foreach ($excuses as $excuse)
-{
-    echo '<li>' . $excuse['excuse'] . '</li>';
-}
+    foreach ($excuses as $excuse)
+    {
+        echo '<li>' . $excuse['excuse'] . '</li>';
+    }
 echo '</ul>';
 
 

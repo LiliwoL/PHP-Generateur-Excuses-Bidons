@@ -1,9 +1,9 @@
 <?php
 // Identifiants de connexion
-$serverName = 'excuses-db';     // Cf. docker-compose pour avoir le nom du container mysql
-$database = 'excuses';          // Cf. fichier d'environnement pour les variables
-$username = 'sio';
-$password = 'azertysio-01';
+$serverName     = 'excuses-db';     // Cf. docker-compose pour avoir le nom du container mysql
+$database       = 'excuses';          // Cf. fichier d'environnement pour les variables
+$username       = 'sio';
+$password       = 'azertysio-01';
 
 try {
     $conn = new PDO("mysql:host=$serverName;dbname=$database", $username, $password);
