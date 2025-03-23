@@ -15,6 +15,7 @@ services:
     # Volumes partagés entre l'hôte et le container
     volumes:
       - ./db_data:/var/lib/mysql
+
       # Script SQL utilisé au démarrage du container
       - ../DATA/database.sql:/docker-entrypoint-initdb.d/init.sql
 

@@ -11,9 +11,9 @@ function getExcuse( PDO $conn, int $thematique, bool $random = true): array
 {
     // 1. Préparation de la requête
     if ($random)
-        $sql = 'SELECT * FROM excuses WHERE idThematique = :thematique ORDER BY RAND() LIMIT 1';
+        $sql = 'SELECT * FROM Excuses WHERE idThematique = :thematique ORDER BY RAND() LIMIT 1';
     else
-        $sql = 'SELECT * FROM excuses WHERE idThematique = :thematique';
+        $sql = 'SELECT * FROM Excuses WHERE idThematique = :thematique';
 
     $stmt = $conn->prepare($sql);
 
@@ -36,7 +36,7 @@ function getExcuse( PDO $conn, int $thematique, bool $random = true): array
 function addExcuses(PDO $conn, int $thematique, string $excuse): int
 {
     // 1. Préparation de la requête
-    $sql = 'INSERT INTO excuses (idThematique, excuse) VALUES (:thematique, :excuse)';
+    $sql = 'INSERT INTO Excuses (idThematique, excuse) VALUES (:thematique, :excuse)';
     $stmt = $conn->prepare($sql);
 
     // 2. Exécution de la requête
